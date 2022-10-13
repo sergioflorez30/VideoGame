@@ -8,20 +8,20 @@ import model.Player;
 
 public class Game{
 
-	    public static final int TOTAL_PLAYERS = 20;
-		public static final int ALL_LEVELS = 10;
-		public static final int TOTAL_TREASURES = 100;
-		public static final int TOTAL_ENEMYS = 50;
+	public static final int TOTAL_PLAYERS = 20;
+	public static final int ALL_LEVELS = 10;
+	public static final int TOTAL_TREASURES = 100;
+	public static final int TOTAL_ENEMYS = 50; 
 
-		private Player[] totalPlayers;
-		private Level[] levels;
-		private Treasure[] treasures;
-		private Enemy[] enemys;
+	private Player[] totalPlayers;
+	private Level[] levels;
+	private Treasure[] treasures;
+	private Enemy[] enemys;
 
-		private Player player;
-		private Treasure treasure;
-		private Enemy enemy;
-		private Level level;
+	private Player player;
+	private Treasure treasure;
+	private Enemy enemy;
+	private Level level;
 
 	public Game(){
 
@@ -158,7 +158,6 @@ public class Game{
 	public String registerPlayer(String nickname, String name){
 		String msj = ""; 
 		
-
 		int comparateNickname = searchSameNickname(nickname);
 		if( comparateNickname != -1){
 			msj = "oh no! ... this nickname already exists :(";
@@ -242,10 +241,14 @@ public class Game{
 			msj = "you cannot add this amount of treasure to this level, for  this level you can  add this amount..." + amount;
 	
 		} else if(amount >= numberTreasureLevel){
-			Treasure newTreasure = new Treasure(nameTreasure, url, scoreWinTreasure, levelTreasure, numberTreasureLevel); 
+			for(int i = 0; i <numberTreasureLevel; i++){
+
+				Treasure newTreasure = new Treasure(nameTreasure, url, scoreWinTreasure, levelTreasure, 1); 
 				if(posLevel != -1 ){
-				msj = levels[posLevel].addTreasureWithObject(newTreasure, numberTreasureLevel); 
+				msj = levels[posLevel].addTreasureWithObject(newTreasure, numberTreasureLevel);  
+				}	
 			}
+			msj = "add treasure at level"; 
 		
 		}
 		return msj; 
@@ -258,15 +261,19 @@ public class Game{
 			msj = "you cannot add this amount of treasure to this game";
 	
 		}else if(amount>=numberTreasureLevel){
-			boolean isEmpty = false; 
-			Treasure newTreasure = new Treasure(nameTreasure, url, scoreWinTreasure, levelTreasure, numberTreasureLevel);
-			for(int i = 0; i <TOTAL_TREASURES && !isEmpty; i++){
-				if(treasures[i] == null){
-					// I add the enemy to the first available array space 
-					treasures[i] = newTreasure; 
-					isEmpty = true; 
-					msj = "New treasure added"; 
-				}
+
+			for(int i =0; i <numberTreasureLevel; i++){
+				boolean isEmpty = false; 
+				Treasure newTreasure = new Treasure(nameTreasure, url, scoreWinTreasure, levelTreasure, numberTreasureLevel);
+					for(int j = 0; j <TOTAL_TREASURES && !isEmpty; j++){
+						if(treasures[j] == null){
+							// I add the treasure to the first available array space 
+							treasures[j] = newTreasure; 
+							isEmpty = true; 
+							
+						}
+			        }
+			msj = "New treasure added"; 
 			}	
 		}
 		
@@ -276,14 +283,13 @@ public class Game{
 
 	public int avaliableTreasure(){
         int amount= 0;
-  
 		for(int i=0;i<TOTAL_TREASURES;i++){
 		    if(treasures[i]==null){
 		        amount++;
 		    }
-		  }
+		}
 		  return amount; 
-		 }
+	}
 
 	public void initialityTreasures(){
 
@@ -353,7 +359,7 @@ public class Game{
 				}else{
 					int amount = levelPlayer.getNextScore() - scorePlayer;
 					msj = "you need this points for the next level..." + amount; 
-				}
+				 }
 			}else{ 
 				for(int i = 0; i< ALL_LEVELS; i++){
 					if(levelPlayer.getId() == levels[i].getId()){
@@ -374,7 +380,7 @@ public class Game{
 			}
 
 			
-		}
+		  }
 
 
 		return msj;
@@ -496,9 +502,80 @@ public class Game{
 
 	public String moreAmountTreasure(){
 
-	String msj=" ";
-    
-   
+	String msj="";
+	int allDiamond = 0;
+	int allRock = 0;
+	int allMap = 0;
+	int allBlade = 0; 
+	int allGolden = 0; 
+	int amountMax= 0; 
+
+	String diamond = "diamond"; 
+	String rock = "rock"; 
+	String map = "map"; 
+	String blade = "blade"; 
+	String golden = "golden";  
+	String nameMax = "diamond";
+
+	for(int i=0; i < TOTAL_TREASURES; i++){
+
+		if(treasures[i] != null && treasures[i].getName().equalsIgnoreCase(diamond)){
+			allDiamond++;
+			
+
+		} else if(treasures[i] != null && treasures[i].getName().equalsIgnoreCase(rock)){
+			allRock++;
+			
+
+		} else if(treasures[i] != null && treasures[i].getName().equalsIgnoreCase(map)){
+			allMap++;
+			
+
+		}else if(treasures[i] != null && treasures[i].getName().equalsIgnoreCase(blade)){
+			allBlade++;
+			
+
+		}else if(treasures[i] != null && treasures[i].getName().equalsIgnoreCase(golden)){
+			allGolden++; 
+			
+		}
+	}
+
+	
+	if(allDiamond > amountMax){
+
+		amountMax = allDiamond; 
+		nameMax = diamond; 
+				 
+	}  
+	if(allRock > amountMax){
+
+		amountMax = allRock; 
+		nameMax = rock;
+				
+	} 
+	if( allMap > amountMax){
+
+		amountMax = allMap; 
+		nameMax = map;
+				
+
+	}  
+	if(allBlade > amountMax){
+
+		amountMax = allBlade; 
+		nameMax = blade; 
+
+	} 
+	if(allGolden > amountMax){
+
+		amountMax = allGolden; 
+		nameMax = golden; 
+		
+	}
+
+	msj = "The most repeated treasure in this game is... " + nameMax + " with this amount... " + amountMax + " "; 
+
     return msj;
 
 	}
@@ -519,9 +596,9 @@ public class Game{
 	}
 	public String amountTreasure(String typeTreasure){
 
-		 int count = 0;
-		 String msj ="";  
-		 for( int i = 0; i <TOTAL_TREASURES; i++){
+		int count = 0;
+		String msj ="";  
+		for( int i = 0; i <TOTAL_TREASURES; i++){
 
 		 	if(treasures[i] != null && treasures[i].getName().equalsIgnoreCase(typeTreasure)){
 		 		count++; 
@@ -534,25 +611,25 @@ public class Game{
 
 
 	public String consonantsEnemyGame(){
-		   String msj = ""; 
-		   int amount=0;
-		   char [] consonants={'q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x',
+		String msj = ""; 
+		int amount=0;
+		char [] consonants={'q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x',
 		                       'c','v','b','n','m'};
 
-		   for(int i=0; i<TOTAL_ENEMYS;i++){
-		      if(enemys[i]!=null){
-		         for(int j=0; j<enemys[i].getName().length();j++){
-		            for(int s=0;s<consonants.length;s++){
-		               if(enemys[i].getName().charAt(j)==consonants[s]){
-		                  amount++;
+		for(int i=0; i<TOTAL_ENEMYS;i++){
+		    if(enemys[i]!=null){
+		        for(int j=0; j<enemys[i].getName().length();j++){
+		           for(int s=0;s<consonants.length;s++){
+		              if(enemys[i].getName().charAt(j)==consonants[s]){
+		               amount++;
 		               }
 		            }
 		         }
-		      }
+		    }
 
 		      msj = "this is the number of consonants ...  "  + amount; 
-		   }
-		   return msj;
 		}
+		   return msj;
+    }
 
 }

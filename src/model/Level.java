@@ -72,34 +72,33 @@ public class Level{
 	}
 
 	public String addTreasureWithObject(Treasure treasure, int amount){
-			int avaliable = avaliableTreasureLevel();
-			String msj = ""; 
-			if (avaliable >= amount){
-				 msj = "Maximum capacity reached."; 
-				boolean isEmpty = false; 
-				for(int j=0; j<amount; j++){
-					for(int i = 0; i <TOTAL_TREASURE && !isEmpty; i++){
-						if(treasures[i] == null){
-							// I add the treasure to the first available array space 
-							treasures[i] = treasure; 
-							isEmpty = true; 
-							msj = "New treasure added a to level"; 
-						}
-					}	
+
+		int avaliable = avaliableTreasureLevel();
+		String msj = ""; 
+		if (avaliable >= amount){
+				msj = "Maximum capacity reached."; 
+			boolean isEmpty = false; 
+			for(int j=0; j<amount; j++){
+				for(int i = 0; i <TOTAL_TREASURE && !isEmpty; i++){
+					if(treasures[i] == null){
+						// I add the treasure to the first available array space 
+						treasures[i] = treasure; 
+						isEmpty = true; 
+						msj = "New treasure added a to level"; 
+					}
 				}	
-			} else{
+			}	
+		} else{
 				msj = "there is no space available"; 
 			}
 			
-			
-
 			return msj; 
-		}
+	}
 
 	public int avaliableTreasureLevel(){
         int amount= 0;
   
-		for(int i=0;i<10;i++){
+		for(int i=0;i<TOTAL_TREASURE;i++){
 		    if(treasures[i]==null){
 		        amount++;
 		    }
@@ -108,7 +107,6 @@ public class Level{
 		 }
 
 	public String enemysLevel(){
-
 		String msj = "";  
 		System.out.println("there are the enemys for this level.. ");
 		for(int i= 0; i< TOTAL_ENEMYS; i++){

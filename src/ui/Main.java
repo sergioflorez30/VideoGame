@@ -90,7 +90,13 @@ public class Main{
 		String abstracto = "abstracto";
 		String jefe = "jefe";
 		String magico = "magico"; 
+		String diamond = "diamond"; 
+		String rock = "rock"; 
+		String map = "map"; 
+		String blade = "blade"; 
+		String golden = "golden";
 		String url = "";
+		String treasureType = ""; 
 		int amount = 0;
 		int score = 0; 
 		switch(option){
@@ -115,12 +121,12 @@ public class Main{
 				System.out.println("type the enemy type :O, just between these guys... ogro, abstracto, jefe y magico");
 				enemyType = reader.next();
 
-				if(ogro.equals(enemyType) || abstracto.equals(enemyType) || jefe.equals(enemyType) || magico.equals(enemyType)){
+				if(ogro.equalsIgnoreCase(enemyType) || abstracto.equalsIgnoreCase(enemyType) || jefe.equalsIgnoreCase(enemyType) || magico.equalsIgnoreCase(enemyType)){
 					
 				} else{
 					System.out.println("this type of enemy doesnt exist :( ... try again\n ");
 					break;  
-				}
+					}
 				System.out.println("type the score lost if the player lost with the enemy");
 				scoreLost = validateIntegerOption();  
 				if(scoreLost<0){
@@ -146,7 +152,6 @@ public class Main{
 				game.addEnemyGame(name, enemyType, scoreLost, scoreWin,levelObject);
 				
 				System.out.println(msj);
-				
 			
 				break; 
 
@@ -154,8 +159,18 @@ public class Main{
 				
 				System.out.println("we will register treasure at a level!\n");
 				
-				System.out.println(" type the treasure name");
+				System.out.println(" type the treasure name... only among diamond, rock, map, blade and golden... UwU ");
 				name = reader.next();
+
+				if(diamond.equalsIgnoreCase(name) || rock.equalsIgnoreCase(name) || map.equalsIgnoreCase(name) || blade.equalsIgnoreCase(name) || golden.equalsIgnoreCase(name)){
+					
+				} else{
+					System.out.println("this type of treasure doesnt exist :( ... try again\n ");
+					break;  
+					}
+
+
+
 				System.out.println("Place the URL of the treasure image ");
 				url = reader.next();
 				System.out.println("enter the score that the user win if he finds the treasure ");
@@ -183,7 +198,6 @@ public class Main{
 				game.addTreasureGame(name, url, scoreWin, levelObject, amount);
 				
 				System.out.println(msj);
-	
 			
 				break;
 
@@ -231,8 +245,15 @@ public class Main{
 
 			case 7: 
 				System.out.println("lets know the amount of an treasure type in this game...  \n");
-				System.out.println("type the treasure type.."); 
+				System.out.println("type the treasure type.. diamond, rock, map, blade or golden "); 
 				name = reader.next(); 
+				if(diamond.equalsIgnoreCase(name) || rock.equalsIgnoreCase(name) || map.equalsIgnoreCase(name) || blade.equalsIgnoreCase(name) || golden.equalsIgnoreCase(name)){
+					
+				} else{
+					System.out.println("this type of treasure doesnt exist :( ... try again\n ");
+					break;  
+				}
+
 
 				msj =game.amountTreasure(name);
 				System.out.println(msj); 
@@ -243,7 +264,7 @@ public class Main{
 				System.out.println("lets know the amount of an enemy type in this game...  \n"); 
 				System.out.println(" type the enemy type..");
 				enemyType = reader.next(); 
-				if(ogro.equals(enemyType) || abstracto.equals(enemyType) || jefe.equals(enemyType) || magico.equals(enemyType)){
+				if(ogro.equalsIgnoreCase(enemyType) || abstracto.equalsIgnoreCase(enemyType) || jefe.equalsIgnoreCase(enemyType) || magico.equalsIgnoreCase(enemyType)){
 					
 				} else{
 					System.out.println("this type of enemy doesnt exist :( ... try again\n ");
