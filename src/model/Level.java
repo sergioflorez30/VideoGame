@@ -54,6 +54,11 @@ public class Level{
 	public String getTypeDificulty(){
 		return typeDificulty; 
 	}
+	/**
+	 * addEnemyWithObject: this method adds the enemy object to the level chosen by the user. 
+	 * @param enemy: Enemy: The method enters the enemy type object with its corresponding attributes.
+	 * @return msj: String: confirmation message.
+	 */
 	
 	public String addEnemyWithObject(Enemy enemy){
 
@@ -70,6 +75,12 @@ public class Level{
 
 		return msj; 
 	}
+	/**
+	 * addTreasureWithObject: este método adiciona um objeto tesouro ao nível escolhido, a cantida de vezes que foi ingressada pelo usuário. 
+	 * @param treasure: Treasure: The method enters the treasure type object with its corresponding attributes.
+	 * @param amount: int: amount is the number of times the treasure object is added in the game. 
+	 * @return String: confirmation message.
+	 */ 
 
 	public String addTreasureWithObject(Treasure treasure, int amount){
 
@@ -94,6 +105,10 @@ public class Level{
 			
 			return msj; 
 	}
+	/**
+	 * avaliableTreasureLevel: This method tells us the amount available to add new treasures to the game. 
+	 * @return amount: int: returns an int that is the amount available 
+	 */
 
 	public int avaliableTreasureLevel(){
         int amount= 0;
@@ -104,7 +119,11 @@ public class Level{
 		    }
 		  }
 		  return amount; 
-		 }
+	}
+	/**
+	 * enemysLevel: this method gives a list of enemies of a specific level. 
+	 * @return msj:  a message list. 
+	 */
 
 	public String enemysLevel(){
 		String msj = "";  
@@ -118,6 +137,10 @@ public class Level{
 
 		return msj;
 	}
+	/**
+	 * TreasuresLevel: this method gives a list of treasures of a specific level. 
+	 * @return msj:  a message list. 
+	 */
 	public String treasuresLevel(){
 		String msj = ""; 
 		System.out.println("there are the treasures for this level...");

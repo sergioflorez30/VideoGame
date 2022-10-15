@@ -315,6 +315,10 @@ public class Main{
 				break; 
 		}
 	}
+	/**
+	 * validateIntegerOption: this method validates that the option entered by the user is actually an integer data type
+	 * @return option: is a int option. 
+	 */
 	public int validateIntegerOption(){
 		int option = 0; 
 

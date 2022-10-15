@@ -154,6 +154,12 @@ public class Game{
 	public Enemy[] getEnemys(){
 		return enemys; 
 	}
+	/**
+	 * registerPlayer: this method register a player at the game.
+	 * @param nickname: String: this is the id of the player.
+	 * @param name: String: this is the real player name.
+	 * @return msj: String: a confirm message.
+	 */
 
 	public String registerPlayer(String nickname, String name){
 		String msj = ""; 
@@ -182,6 +188,11 @@ public class Game{
 		
 
 	}
+	/**
+	 * searchSameNickname: This method compares the nicknames of existing players to see if there is already one.
+	 * @param nickname: String: the nickname player.
+	 * @return pos: a position in the array. 
+	 */
 
 	public int searchSameNickname(String nickname){
 		int pos = -1; 
@@ -194,6 +205,15 @@ public class Game{
 		}
 		return pos; 
 	}
+	/**
+	 * addEnemyLevel: this method add a enemy for a level. 
+	 * @param nameEnemy: String: the enemy name.
+	 * @param typeEnemy: String: the type enemy.
+	 * @param scoreLostEnemy: int: the score the player loses if he loses to the enemy in specific. 
+	 * @param scoreWinEnemy: int: the score the player win if he win to the enemy in specific. 
+	 * @param levelEnemy: int: the level where the enemy is. 
+	 * @return msj: a  confirmation message.
+	 */
 
 	public String addEnemyToLevel(String nameEnemy, String typeEnemy, int scoreLostEnemy, int scoreWinEnemy, int levelEnemy){
 		String msj = "Could not add a enemy"; 
@@ -204,6 +224,11 @@ public class Game{
 		}
 		return msj; 
 	}
+	/**
+	 * searchLevelById: this method search a level by the id level.
+	 * @param level: int: the level who going to be search.
+	 * @return pos: the position in the array.
+	 */
 
 	public int searchLevelById(int level){
 		int pos = -1; 
@@ -216,6 +241,15 @@ public class Game{
 		}
 		return pos; 
 	}
+	/**
+	 * addEnemyGame: this method add a enemy to game . 
+	 * @param nameEnemy: String: the enemy name.
+	 * @param typeEnemy: String: the type enemy.
+	 * @param scoreLostEnemy: int: the score the player loses if he loses to the enemy in specific. 
+	 * @param scoreWinEnemy: int: the score the player win if he win to the enemy in specific. 
+	 * @param levelEnemy: int: the level where the enemy is. 
+	 * @return msj: a  confirmation message.
+	 */
 
 	public String addEnemyGame(String nameEnemy, String typeEnemy, int scoreLostEnemy, int scoreWinEnemy, int levelEnemy){
 		String msj = "Could not add a enemy"; 
@@ -232,6 +266,15 @@ public class Game{
 
 		return msj; 
 	}
+	/**
+	 * addTreasureToLevel: this method add a treasure for a level.
+	 * @param nameTreasure: String: the treasure name.
+	 * @param url: String the treasure url image.
+	 * @param scoreWinTreasure: int:the score the player win if he found to the treasure in specific.
+	 * @param levelTreasure: int: the level where the treasure is. 
+	 * @param numberTreasureLevel: int: the number of the treasure than the user want added.
+	 * @return msj: a  confirmation message.
+	 */
 
 	public String addTreasureToLevel(String  nameTreasure, String url,  int scoreWinTreasure, int levelTreasure,int numberTreasureLevel){
 		String msj = "Could not add a treasure";  
@@ -253,6 +296,15 @@ public class Game{
 		}
 		return msj; 
 	}
+	/**
+	 * addTreasureToGame: this method add a treasure to game.
+	 * @param nameTreasure: String: the treasure name.
+	 * @param url: String the treasure url image.
+	 * @param scoreWinTreasure: int:the score the player win if he found to the treasure in specific.
+	 * @param levelTreasure: int: the level where the treasure is. 
+	 * @param numberTreasureLevel: int: the number of the treasure than the user want added.
+	 * @return msj: a  confirmation message.
+	 */
 
 	public String addTreasureGame(String  nameTreasure, String url,  int scoreWinTreasure, int levelTreasure,int numberTreasureLevel){
 		String msj = "Could not add a treasure"; 
@@ -280,6 +332,10 @@ public class Game{
 
 		return msj; 
 	}
+	/**
+	 * avaliableTreasure: This method tells us the amount available to add new treasures to the game. 
+	 * @return amount: int: returns an int that is the amount available 
+	 */
 
 	public int avaliableTreasure(){
         int amount= 0;
@@ -310,6 +366,12 @@ public class Game{
 		}
 		
 	}
+	/**
+	 * changeScorePlayer: this method change the player score in the game.
+	 * @param nickname: String: the nickname player.
+	 * @param newScorePlayer: int:  the new score than the player will give. 
+	 * @return msj: a confirmation message. 
+	 */
 
 	public String changeScorePlayer(String nickname, int newScorePlayer){
 		 String msj = ""; 
@@ -325,6 +387,11 @@ public class Game{
 		}
 		return msj; 
 	}
+	/**
+	 * findPlayer: this method find the player with the nickname
+	 * @param nickname: String; the nickname player.
+	 * @return msj: String: a confirmation message.
+	 */
 
 	public Player findPlayer(String nickname){
 
@@ -343,6 +410,11 @@ public class Game{
 		return theFirst;
 
 	}
+	/**
+	 * changeLevelPlayer: This method changes the level of the player by entering their id or nickname by the user. 
+	 * @param nickname: String: the nickname player.
+	 * @return msj: a confirmation message.
+	 */
 
 	public String changeLevelPlayer(String nickname){
 		 String msj = "the level was changed successfully... UwU "; 
@@ -385,6 +457,11 @@ public class Game{
 
 		return msj;
 	}
+	/**
+	 * enemysForLevel: this method gives a list of enemies of a specific level. 
+	 * @param level:  int: the level of the game.
+	 * @return msj:  a message list. 
+	 */
 
 	public String enemysForLevel(int level){
 		int posLevel = searchLevelById(level);
@@ -394,6 +471,11 @@ public class Game{
 
 		return msj;
 	}
+	/**
+	 * TreasuresForLevel: this method gives a list of treasures of a specific level. 
+	 * @param level: int: the level of the game. 
+	 * @return msj : a message list. 
+	 */
 
 	public String treasuresForLevel(int level){
 		int posLevel = searchLevelById(level);
@@ -403,6 +485,10 @@ public class Game{
 
 		return msj;
 	}
+	/**
+	 * topPlayer: this method shows us the best players in the game regarding their score obtained. 
+	 *@return msj: a message with the top 5 players with their score. 
+	 */
 
 	public String topPlayer(){
 		int top1 = 0;
@@ -477,6 +563,10 @@ public class Game{
 
 		return msj; 
 	}
+	/**
+	 * enemyMoreScore: This method shows us the enemy that gives us the highest score by beating him.
+	 * @return msj:  a message with the enemy, the score and the level where he is. 
+	 */
 
 	public String enemyMoreScore(){
 
@@ -499,6 +589,10 @@ public class Game{
 		}
 		return msj; 
 	}
+	/**
+	 * moreAmountTreasure: This method shows us what is the most repeated treasure in the game. 
+	 * @return msj: a message with the most repeated treasure. 
+	 */
 
 	public String moreAmountTreasure(){
 
@@ -579,6 +673,11 @@ public class Game{
     return msj;
 
 	}
+	/**
+	 * AmountEnemy: This method shows us what is the most repeated of type  enemy  in the game. 
+	 * @param typeEnemy: String: the type enemy. 
+	 * @return msj: a message with the most repeated enemy. 
+	 */
 
 	public String amountEnemy(String typeEnemy){
 
@@ -594,6 +693,11 @@ public class Game{
 
 		 return msj; 
 	}
+	/**
+	 * AmountTreasure: This method shows us what is the most repeated of type  treasure  in the game. 
+	 * @param typeTreasure: String: the type treasure. 
+	 * @return msj: a message with the most repeated treasure. 
+	 */
 	public String amountTreasure(String typeTreasure){
 
 		int count = 0;
@@ -608,8 +712,10 @@ public class Game{
 
 		 return msj; 
 	}
-
-
+	/**
+	 * consonantsEnemyGame: This method tells us the consonants in the names of the enemies of the game. 
+	 * @return : a message with the amount consonants
+	 */
 	public String consonantsEnemyGame(){
 		String msj = ""; 
 		int amount=0;
@@ -621,7 +727,7 @@ public class Game{
 		        for(int j=0; j<enemys[i].getName().length();j++){
 		           for(int s=0;s<consonants.length;s++){
 		              if(enemys[i].getName().charAt(j)==consonants[s]){
-		               amount++;
+		               amount++; 
 		               }
 		            }
 		         }
